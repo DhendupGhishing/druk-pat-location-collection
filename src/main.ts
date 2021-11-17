@@ -3,6 +3,10 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  await app.listen(3000);
+  const globalPrefix = '';
+  app.enableCors();
+  app.setGlobalPrefix(globalPrefix);
+  const port = process.env.PORT || 5000;
+  await app.listen(port);
 }
 bootstrap();
